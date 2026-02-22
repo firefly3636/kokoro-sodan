@@ -4,6 +4,7 @@
     { "src": "API/advice.js", "use": "@vercel/node" }
   ],
   "routes": [
+    { "handle": "filesystem" },
     { "src": "/api/advice", "dest": "/API/advice.js" }
   ]
 }
