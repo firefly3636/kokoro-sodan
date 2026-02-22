@@ -1,13 +1,13 @@
 {
   "version": 2,
   "builds": [
-    { "src": "API/advice.js", "use": "@vercel/node" },
+    { "src": "api-handler.js", "use": "@vercel/node" },
     { "src": "index.html", "use": "@vercel/static" },
     { "src": "app.js", "use": "@vercel/static" },
     { "src": "styles.css", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/api/advice", "dest": "/API/advice.js" },
+    { "src": "/api/advice", "dest": "api-handler.js" },
     { "handle": "filesystem" }
   ]
 }
