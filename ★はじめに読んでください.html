@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>心の相談室 - はじめに読んでください</title>
+  <style>
+    body { font-family: 'Yu Gothic', 'Meiryo', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; line-height: 1.9; }
+    h1 { color: #5a7a6b; font-size: 1.5rem; border-bottom: 2px solid #e8b4a0; padding-bottom: 8px; }
+    h2 { color: #5a7a6b; font-size: 1.2rem; margin-top: 32px; }
+    .step { background: #faf8f5; padding: 16px 20px; margin: 12px 0; border-radius: 12px; border-left: 4px solid #7c9a8b; }
+    .step-num { font-weight: bold; color: #5a7a6b; font-size: 1.1rem; }
+    .important { background: #fff5f0; padding: 12px; border-radius: 8px; margin: 16px 0; }
+    .note { font-size: 0.9rem; color: #666; margin-top: 8px; }
+    ul { padding-left: 24px; }
+    a { color: #5a7a6b; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>🌱 心の相談室 - はじめに読んでください</h1>
+  <p>このアプリの使い方を、<strong>初めての方でもわかるように</strong>説明します。</p>
+
+  <h2>📁 まず：ファイルはどこにある？</h2>
+  <p>あなたのパソコンの中の、この場所にあります。</p>
+  <div class="step">
+    <p><strong>C:\Users\ashit\omayami-app</strong></p>
+    <p class="note">↑ この「フォルダ」の中に、アプリのファイルが全部入っています。</p>
+  </div>
+  <p><strong>フォルダの開き方：</strong></p>
+  <ul>
+    <li>キーボードの <strong>Windowsキー</strong>（窓のマーク）を押す</li>
+    <li>「エクスプローラー」と入力して Enter</li>
+    <li>上の「アドレス欄」に <strong>C:\Users\ashit\omayami-app</strong> と入力して Enter</li>
+    <li>フォルダが開きます</li>
+  </ul>
+
+  <h2>▶ 自分で使う場合（3つのステップ）</h2>
+
+  <div class="step">
+    <p class="step-num">ステップ1：アプリを開く</p>
+    <p>フォルダを開いたら、次のいずれかを <strong>ダブルクリック</strong> します。</p>
+    <ul>
+      <li><strong>心の相談室.html</strong>（←これがあれば、これをダブルクリック）</li>
+      <li><strong>index.html</strong>（これがあれば）</li>
+      <li><strong>start.bat</strong>（上記がない場合はこれ）</li>
+    </ul>
+    <p>→ ブラウザが開き、心の相談室の画面が出ます。</p>
+    <p class="note">※ index.html が見つからないエラーが出た場合：<strong>心の相談室.html</strong> を直接ダブルクリックしてください。</p>
+  </div>
+
+  <div class="step">
+    <p class="step-num">ステップ2：初回だけ、設定をする</p>
+    <p>開いた画面の <strong>右上</strong> に、<strong>⚙️（歯車のマーク）</strong> があります。</p>
+    <p>それを <strong>1回クリック</strong> します。</p>
+    <p>出てきた画面で：</p>
+    <ul>
+      <li>「OpenAI（自分のAPIキーを使う）」を選ぶ</li>
+      <li>「OpenAI APIキー」の欄に、あなたのキーを入力する</li>
+      <li>「設定を保存」をクリック</li>
+    </ul>
+    <p class="note">※ APIキーを持っていない場合：<a href="https://platform.openai.com/signup" target="_blank">ここをクリック</a>して無料登録すると、使えるキーがもらえます。</p>
+  </div>
+
+  <div class="step">
+    <p class="step-num">ステップ3：悩みを書いて、AIとチャットする</p>
+    <p>① 「悩みを書く」のボタンをクリック</p>
+    <p>② タイトルと内容を書いて「保存する」をクリック</p>
+    <p>③ 一覧に出た悩みをクリック</p>
+    <p>④ 「AIとチャットを始める」をクリック</p>
+    <p>⑤ AIが答えてくれます。納得するまで、何度でもメッセージを送れます。</p>
+  </div>
+
+  <h2>👥 人に渡す場合（2つの方法）</h2>
+
+  <h3>方法A：URLで渡す（買った人がすぐ使える）</h3>
+  <div class="step">
+    <p class="step-num">あなたがやること：</p>
+    <p>1. フォルダ内の <strong>deploy.bat</strong> または「デプロイしてURLを取得する.bat」をダブルクリック</p>
+    <p>2. 黒い画面が出たら <strong>閉じずにそのまま待つ</strong></p>
+    <p>3. ブラウザが開いたら、Vercel にログイン（初回だけ）</p>
+    <p>4. 黒い画面に <strong>URL（https://〇〇〇.vercel.app）</strong> が表示される</p>
+    <p>5. そのURLとアクセスコードを、渡したい人に送る</p>
+    <p class="note">※ 詳しくは「URLで渡す手順.md」を開いてください。</p>
+  </div>
+  <div class="important">
+    <p><strong>渡された人がやること：</strong></p>
+    <p>1. もらったURLをブラウザで開く</p>
+    <p>2. 初回だけ、アクセスコードを入力して「利用開始」をクリック</p>
+    <p>3. あとは「悩みを書く」→「AIとチャットを始める」で使えます</p>
+  </div>
+
+  <h3>方法B：フォルダをZIPにして渡す</h3>
+  <div class="step">
+    <p>1. omayami-app フォルダを右クリック</p>
+    <p>2. 「送る」→「圧縮(zip形式)フォルダー」を選ぶ</p>
+    <p>3. できたZIPファイルを、渡したい人に送る（メール、LINEなど）</p>
+    <p>4. 相手はZIPを解凍して、「今すぐ使う.bat」をダブルクリック</p>
+    <p class="note">※ 相手もAPIキーの設定が必要です（ステップ2と同じ）。</p>
+  </div>
+
+  <h2>❓ 困ったとき</h2>
+  <ul>
+    <li><strong>「今すぐ使う.bat」が見つからない</strong> → C:\Users\ashit\omayami-app のフォルダを開いているか確認</li>
+    <li><strong>ダブルクリックのやり方</strong> → マウスの左ボタンを、素早く2回「カチカチ」と押す</li>
+    <li><strong>ブラウザって何？</strong> → インターネットのページを見るソフト（Chrome、Edgeなど）</li>
+  </ul>
+
+  <p style="margin-top: 40px; color: #666; font-size: 0.9rem;">心の相談室 - あなたの気持ちに寄り添います</p>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>心の相談室 - 自分だけの相談ノート</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+      <div class="header-content">
+        <h1 class="logo">
+          <span class="logo-icon">🌱</span>
+          心の相談室
+        </h1>
+        <p class="tagline">あなたの気持ちを、このデバイスだけに残す</p>
+        <p class="privacy-notice">🔒 悩みの記録は端末内に保存。AI利用時のみサーバーへ送信されます</p>
+        <button class="btn-settings" id="settingsTrigger" title="設定">⚙️</button>
+      </div>
+    </header>
+
+    <div class="modal" id="accessCodeModal">
+      <div class="modal-content">
+        <h2>🎉 ようこそ</h2>
+        <p class="settings-desc">AIのアドバイスを使うには、購入時に届いた<strong>アクセスコード</strong>を入力してください。<br>入力すれば、すぐに使えます。</p>
+        <form id="accessCodeForm">
+          <div class="form-group">
+            <label for="accessCode">アクセスコード</label>
+            <input type="text" id="accessCode" placeholder="購入メールに記載のコード" autocomplete="off">
+          </div>
+          <button type="submit" class="btn-submit">利用開始</button>
+        </form>
+        <p class="access-code-later"><button type="button" id="accessCodeLater">あとで入力する</button></p>
+      </div>
+    </div>
+
+    <div class="modal" id="settingsModal">
+      <div class="modal-content">
+        <button class="modal-close" id="settingsModalClose" aria-label="閉じる">&times;</button>
+        <h2>設定</h2>
+        <form id="settingsForm">
+          <div class="form-group">
+            <label for="aiProvider">AIの利用方法</label>
+            <select id="aiProvider">
+              <option value="hosted">購入版（かんたん）※アクセスコードだけでOK</option>
+              <option value="openai">OpenAI（自分のAPIキーを使う）</option>
+              <option value="ollama">Ollama（ローカル・無料）</option>
+            </select>
+          </div>
+          <div class="form-group" id="accessCodeGroup">
+            <label for="accessCodeSetting">アクセスコード</label>
+            <input type="text" id="accessCodeSetting" placeholder="購入時に届いたコード">
+          </div>
+          <div class="form-group hidden" id="openaiKeyGroup">
+            <label for="openaiKey">OpenAI APIキー</label>
+            <input type="password" id="openaiKey" placeholder="sk-..." autocomplete="off">
+            <small><a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">APIキーを取得</a></small>
+          </div>
+          <div class="form-group hidden" id="ollamaInfo">
+            <p class="ollama-note">Ollamaをインストールし、<code>ollama run llama3.2</code> でモデルを起動してください。</p>
+          </div>
+          <button type="submit" class="btn-submit">設定を保存</button>
+        </form>
+      </div>
+    </div>
+
+    <main class="main-content">
+      <section class="post-section">
+        <button class="btn-post-trigger" id="postTrigger">
+          <span class="btn-icon">✏️</span>
+          悩みを書く
+        </button>
+
+        <div class="modal" id="postModal">
+          <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="閉じる">&times;</button>
+            <h2>悩みを書く</h2>
+            <form id="postForm">
+              <div class="form-group">
+                <label for="category">カテゴリ</label>
+                <select id="category" required>
+                  <option value="">選択してください</option>
+                  <option value="work">仕事・キャリア</option>
+                  <option value="relationship">人間関係</option>
+                  <option value="love">恋愛</option>
+                  <option value="family">家族</option>
+                  <option value="health">心と身体の健康</option>
+                  <option value="money">お金</option>
+                  <option value="future">将来・進路</option>
+                  <option value="other">その他</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="title">タイトル</label>
+                <input type="text" id="title" placeholder="悩みのタイトルを入力" maxlength="50" required>
+              </div>
+              <div class="form-group">
+                <label for="content">相談内容</label>
+                <textarea id="content" placeholder="あなたの気持ちを自由に書いてください。この端末内にだけ保存され、誰にも共有されません。" rows="6" required></textarea>
+              </div>
+              <button type="submit" class="btn-submit">
+                <span>保存する</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="filter-section">
+        <label for="filterCategory">カテゴリで絞り込み</label>
+        <select id="filterCategory">
+          <option value="">すべて</option>
+          <option value="work">仕事・キャリア</option>
+          <option value="relationship">人間関係</option>
+          <option value="love">恋愛</option>
+          <option value="family">家族</option>
+          <option value="health">心と身体の健康</option>
+          <option value="money">お金</option>
+          <option value="future">将来・進路</option>
+          <option value="other">その他</option>
+        </select>
+      </section>
+
+      <section class="posts-section">
+        <h2 class="section-title">あなたの相談ノート</h2>
+        <div class="posts-list" id="postsList"></div>
+        <div class="empty-state" id="emptyState">
+          <span class="empty-icon">💬</span>
+          <p>まだ投稿がありません</p>
+          <p class="empty-hint">気になったことを、ここに書いてみましょう</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>心の相談室 - あなただけの相談ノート（端末内にのみ保存）</p>
+    </footer>
+  </div>
+
+  <div class="modal" id="detailModal">
+    <div class="modal-content modal-detail">
+      <button class="modal-close" id="detailModalClose" aria-label="閉じる">&times;</button>
+      <div id="detailContent"></div>
+      <div class="reply-section">
+        <h3>自分のメモ・気づきを追加</h3>
+        <form id="replyForm">
+          <input type="hidden" id="replyToId">
+          <textarea id="replyContent" placeholder="あとから思ったこと、気づいたことをメモしておきましょう..." rows="3" required></textarea>
+          <button type="submit" class="btn-submit btn-reply">メモを追加</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
